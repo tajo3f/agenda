@@ -36,7 +36,7 @@ export default function AppShell({ children, admin=false, title="TAJO Agenda" }:
       </div>
     </aside>
     <main className="main">
-      <header className="topbar"><h1>{title}</h1><div className="actions"><Link className="btn sm ghost hideMobile" href={admin?"/dashboard":"/admin"}>{admin?"Ver painel cliente":"Super Admin"}</Link><button className="btn sm"><Bell size={15}/> <span className="hideMobile">Notificações</span></button></div></header>
+      <header className="topbar"><h1>{title}</h1><div className="actions">{admin && <Link className="btn sm ghost hideMobile" href="/dashboard">Ver painel cliente</Link>}<button className="btn sm"><Bell size={15}/> <span className="hideMobile">Notificações</span></button></div></header>
       {children}
     </main>
     <nav className="mobileNav">

@@ -1,0 +1,17 @@
+'use server'
+
+import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
+
+export async function login(formData: FormData) {
+  const email = String(formData.get('email') || '').trim().toLowerCase()
+  const password = String(formData.get('password') || '')
+  const next = String(formData.get('next') || '/dashboard')
+  const safeNext = next.startsWith('/') && !next.startsWith('//') ? next : '/dashboard'
+
+  const supabase = await createClient()
+  const { error } = await supabase.auth.signInWithPassword({ email, password })
+  if (error) redirect(`/login?error=${encodeURIComponent('E-mail ou senha inválidos.')}`)
+
+  redirect(safeNext)
+}

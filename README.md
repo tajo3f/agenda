@@ -1,61 +1,33 @@
-# TAJO Agenda V1 — Frontend
+# TAJO Agenda V2 — Frontend + Supabase
 
-Frontend demonstrável do primeiro MVP do TAJO Agenda.
+Primeira base full-stack do TAJO Agenda.
 
-## Rotas principais
+## Incluído
+- Next.js + TypeScript
+- Supabase Auth com sessão por cookies
+- arquitetura SaaS multi-tenant
+- Super Admin TAJO
+- owner / manager / staff
+- RLS por organização
+- serviços, profissionais e clientes
+- regras de disponibilidade e bloqueios
+- agendamento público real por RPC
+- proteção contra conflito/sobreposição
+- fila de notificações
+- Edge Function para notificações internas
+- estrutura preparada para Push/FCM e WhatsApp oficial
+- criação de empresa/cliente pelo Super Admin
 
-- `/` — landing page comercial
-- `/login` — login demonstrativo
-- `/dashboard` — painel do cliente
-- `/dashboard/agenda`
-- `/dashboard/clientes`
-- `/dashboard/servicos`
-- `/dashboard/profissionais`
-- `/dashboard/horarios`
-- `/dashboard/notificacoes`
-- `/dashboard/configuracoes`
+## Comece aqui
+Leia `SETUP_SUPABASE.md`.
+
+## Rotas
+- `/` — landing page
+- `/login` — autenticação Supabase
+- `/dashboard` — empresa
 - `/admin` — Super Admin TAJO
-- `/admin/empresas`
-- `/admin/assinaturas`
-- `/admin/configuracoes`
-- `/agendar/barbearia-central` — página pública de agendamento
-- `/agendar/barbearia-central/confirmado`
+- `/admin/empresas/nova` — provisionar novo cliente
+- `/agendar/[slug]` — agendamento público real
 
-## Executar
-
-```bash
-npm install
-npm run dev
-```
-
-Abra `http://localhost:3000`.
-
-## Publicar na Vercel
-
-1. Envie o projeto para um repositório GitHub.
-2. Importe o repositório na Vercel.
-3. Framework: Next.js.
-4. Não há variáveis de ambiente nesta versão frontend.
-5. Depois conecte `agenda.tajodigital.com.br` em Domains.
-
-## Escopo desta versão
-
-É frontend demonstrável. Não possui autenticação real, banco, pagamentos, WhatsApp ou Push real.
-
-A próxima etapa é Supabase:
-- Auth
-- multi-tenant / organizations
-- RLS
-- appointments
-- services
-- professionals
-- customers
-- availability
-- notification jobs
-- push subscriptions
-- subscriptions
-- audit logs
-
-## Direção visual
-
-Paleta neutra (preto, branco, cinza e off-white) para permitir que negócios de diferentes nichos utilizem a mesma base visual sem conflito com suas marcas.
+## Importante
+A entrega de Push no sistema operacional e o envio de WhatsApp dependem de credenciais externas (FCM/Web Push e Meta WhatsApp Cloud API). A fila e o modelo de dados já estão preparados; credenciais não são simuladas nem embutidas no código.
